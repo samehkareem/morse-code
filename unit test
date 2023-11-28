@@ -1,0 +1,20 @@
+import unittest
+from morse_code import word_to_morse,morse_to_word
+class MorseCodeConverterTest(unittest.TestCase):
+
+    def test_word_to_morse(self):
+        word = "hello world"
+        expected_morse_code = "- ... .-.- - . / - .. -. --."
+
+        morse_code = word_to_morse(word)
+        self.assertEqual(morse_code, expected_morse_code)
+
+    def test_morse_to_word(self):
+        morse_code = "- ... .-.- - . / - .. -. --."
+        expected_word = "hello world"
+
+        word = morse_to_word(morse_code)
+        self.assertEqual(word, expected_word)
+
+if __name__ == "__main__":
+    unittest.main()
