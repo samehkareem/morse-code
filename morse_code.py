@@ -94,3 +94,18 @@ def morse_to_word(morse_code):
     return english_word
 morse_code="-- --- .... .- -- . -.."
 print(morse_to_word(morse_code))
+def test_word_morse_conversion():
+    method = input("Choose a method (word to morse or morse to word): ")
+
+    if method.lower() == "word to morse":
+        word = input("Enter the word to convert to Morse code: ")
+        morse_code = word_to_morse(word)
+        print("Morse code:", morse_code)
+    elif method.lower() == "morse to word":
+        morse_code = input("Enter the Morse code to decode: ")
+        word = morse_to_word(morse_code)
+        print("Decoded word:", word)
+    else:
+        print("Invalid method. Please choose either word to Morse or Morse to word.")
+test=test_word_morse_conversion()
+print(test)
