@@ -118,10 +118,5 @@ def test_word_morse_conversion():
     else:
         print("Invalid method. Please choose either word to Morse or Morse to word.")
 
-test_word_to_morse = word_to_morse("SAMEH")
-print(f"Morse code for 'SAMEH': {test_word_to_morse}")
-
 test_word_morse_conversion()
 
-test_word_to_morse = word_to_morse("SAMEH")
-print(f"Morse code for 'SAMEH': {test_word_to_morse}")
