@@ -59,7 +59,7 @@ morse_to_alphabet = {
 }
 
 
-def word_to_morse(word):
+def word_to_morse(word): # Function that converts words to morse
     word = word.upper()
     morse_code = ""
     invalid_char_count = 0  # Counter for invalid characters
@@ -78,7 +78,7 @@ def word_to_morse(word):
     return morse_code
 
 
-def morse_to_word(morse_code):
+def morse_to_word(morse_code): # Function that converts morse to word
     english_word = ""
     current_morse = ""
     invalid_char_count = 0  # Counter for invalid characters
@@ -104,7 +104,7 @@ def morse_to_word(morse_code):
     return english_word
 
 
-def test_word_morse_conversion():
+def test_word_morse_conversion(): #The user interface
     method = input("Choose a method (word to morse or morse to word): ")
 
     if method.lower() == "word to morse":
