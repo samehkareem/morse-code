@@ -28,12 +28,8 @@ morse_code_dict = {
     ' ': ' '  # Space between words
 }
 
-morse_to_alphabet={
-    
-
-    
-    
-    '.': 'A',
+morse_to_alphabet = {
+    '.-': 'A',
     '-...': 'B',
     '-.-.': 'C',
     '-..': 'D',
@@ -60,40 +56,54 @@ morse_to_alphabet={
     '-.--': 'Y',
     '--..': 'Z',
     ' ': ' '  # Space between words
+}
+
+
 def word_to_morse(word):
     word = word.upper()
     morse_code = ""
+    invalid_char_count = 0  # Counter for invalid characters
+
     for char in word:
-        morse_code += morse_code_dict[char]
-        if char != ' ':
+        if char in morse_code_dict:
+            morse_code += morse_code_dict[char] + ' '
+        elif char == ' ':
             morse_code += ' '
+        else:
+            invalid_char_count += 1
+
+    if invalid_char_count > 0:
+        print(f"Your input includes {invalid_char_count} invalid character(s) that were neglected during the conversion")
+
     return morse_code
-word="mohamed"
-print(word_to_morse(word))
+
 
 def morse_to_word(morse_code):
     english_word = ""
-    current_letter = ""
+    current_morse = ""
+    invalid_char_count = 0  # Counter for invalid characters
 
     for char in morse_code:
-        if char == '.':
-            current_letter += '.'
-        elif char == '-':
-            current_letter += '-'
+        if char in ('.', '-'):
+            current_morse += char
         elif char == ' ':
-            if current_letter in morse_to_alphabet:
-                 english_word+= morse_to_alphabet[current_letter]
-            current_letter = ""
+            if current_morse in morse_to_alphabet:
+                english_word += morse_to_alphabet[current_morse]
+            else:
+                invalid_char_count += 1
+            current_morse = ""
         else:
-            # Handle unknown characters
-            pass
+            invalid_char_count += 1
 
-    if current_letter in morse_to_alphabet:
-        english_word+= morse_to_alphabet[current_letter]
+    if current_morse in morse_to_alphabet:
+        english_word += morse_to_alphabet[current_morse]
+
+    if invalid_char_count > 0:
+        print(f"Your input includes {invalid_char_count} invalid character(s) that were neglected during the conversion")
 
     return english_word
-morse_code="-- --- .... .- -- . -.."
-print(morse_to_word(morse_code))
+
+
 def test_word_morse_conversion():
     method = input("Choose a method (word to morse or morse to word): ")
 
@@ -107,5 +117,11 @@ def test_word_morse_conversion():
         print("Decoded word:", word)
     else:
         print("Invalid method. Please choose either word to Morse or Morse to word.")
-test=test_word_morse_conversion()
-print(test)
+
+test_word_to_morse = word_to_morse("SAMEH")
+print(f"Morse code for 'SAMEH': {test_word_to_morse}")
+
+test_word_morse_conversion()
+
+test_word_to_morse = word_to_morse("SAMEH")
+print(f"Morse code for 'SAMEH': {test_word_to_morse}")
